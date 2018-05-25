@@ -1,0 +1,662 @@
+$yellow: #ffdc2c;
+$blue: #263c70;
+$white: #fff;
+$green: #69b42e;
+$gray: #635109;
+$border: 1px solid #ccc;
+$sprite: url(../images/sprite.png) no-repeat;
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-weight: normal;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+article, aside, figure, footer, header, nav, section, details, summary {display: block;}
+
+html {
+	box-sizing: border-box;
+	line-height:1;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+img,
+object,
+embed {max-width: 100%;}
+
+html {overflow-y: scroll;}
+
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent; text-decoration:none;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom;}
+.ie7 input[type="checkbox"] {vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+
+small {font-size: 85%;}
+
+strong {font-weight: bold;}
+
+td, td img {vertical-align: top;}
+
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {cursor: pointer;}
+
+button, input, select, textarea {margin: 0;}
+
+button,
+input[type=button] {width: auto; overflow: visible;}
+
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+@font-face {
+	font-family:'oswald-light';
+	src:url('../fonts/oswald-light-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/oswald-light-webfont.woff') format('woff'),
+		url('../fonts/oswald-light-webfont.ttf') format('truetype'),
+		url('../fonts/oswald-light-webfont.svg#oswald-light') format('svg');
+	font-weight:300;
+	font-style:normal;
+}
+
+@font-face {
+	font-family:'oswald-regular';
+	src:url('../fonts/oswald-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/oswald-regular-webfont.woff') format('woff'),
+		url('../fonts/oswald-regular-webfont.ttf') format('truetype'),
+		url('../fonts/oswald-regular-webfont.svg#oswald-regular') format('svg');
+	font-weight:normal;
+	font-style:normal;
+}
+
+@font-face {
+	font-family:'oswald-bold';
+	src:url('../fonts/oswald-bold-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/oswald-bold-webfont.woff') format('woff'),
+		url('../fonts/oswald-bold-webfont.ttf') format('truetype'),
+		url('../fonts/oswald-bold-webfont.svg#oswald-bold') format('svg');
+	font-weight:700;
+	font-style:normal;
+}
+
+body {
+    font-family:'oswald-regular';
+    font-size: 13px;
+}
+
+input, select, textarea, button {
+    font-family:'oswald-regular';
+}
+
+strong {
+    font-family:'oswald-bold';
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+
+.select {
+    background-color: $white;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 20px 0 0;
+    position: relative;
+
+    &::after {
+        background: $sprite;
+        background-position: -16px -18px;
+        content: '';
+        display: block;
+        height: 6px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        width: 10px;
+    }
+
+    span {
+        padding: 0 15px;
+    }
+
+    select {
+        height: 38px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+.btn {
+    background-color: $blue;
+    border: none;
+    border-bottom: 3px solid #050d20;
+    border-radius: 4px;
+    color: $white;
+    display: inline-block;
+    font-family:'oswald-bold';
+    font-size: 14px;
+    height: 50px;
+    letter-spacing: 1px;
+    line-height: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.cars {
+    padding: 30px 0;
+
+    aside {
+        background-color: $yellow;
+        float: left;
+        padding: 10px;
+        width: 100%;
+
+        .input-group {
+            margin-bottom: 10px;
+            overflow: hidden;
+
+            label {
+                color: $gray;
+                display: block;
+                font-family:'oswald-light';
+                font-size: 11px;
+                margin-bottom: 3px;
+                text-transform: uppercase;
+
+                strong {
+                    color: $blue;
+                    text-transform: none;
+                }
+            }
+
+            .input {
+                background-color: $white;
+                border: $border;
+                border-radius: 3px;
+                overflow: hidden;
+            }
+
+            input[type="text"] {
+                border: none;
+                border-radius: 3px;
+                color: $blue;
+                font-size: 14px;
+                height: 38px;
+                padding: 0 7px;
+                width: 100%;
+
+                &.date {
+                    background:$white url(../images/icon-calendar.png) no-repeat right center;
+                    float: left;
+                    width: calc(100% - 104px);
+                }
+            }
+
+            .select {
+                color: $blue;
+                float: right;
+                width: 94px;
+
+                &::before {
+                    background-color: #756526;
+                    content: '';
+                    display: block;
+                    height: 28px;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 1px;
+                }
+            }
+
+            .title {
+                background-color: $green;
+                color: $white;
+                font-family:'oswald-light';
+                padding: 4px 7px;
+                text-transform: uppercase;
+            }
+
+            .list-check {
+                background-color: #fff1ab;
+                border: 1px solid $green;
+                overflow: hidden;
+                padding: 6px;
+
+                label {
+                    color: $blue;
+                    float: left;
+                    margin-right: 20px;
+                    text-transform: none;
+                }
+            }
+        }
+    }
+
+    article {
+        float: right;
+        width: 100%;
+
+        .filter {
+            margin: 30px 0;
+            overflow: hidden;
+
+            .input-group {
+                border: $border;
+                border-radius: 3px;
+                float: left;
+                margin: 0 0 20px;
+                padding: 0 10px;
+                width: 100%;
+
+                label {
+                    color: $blue;
+                    display: inline-block;
+                    font-family:'oswald-light';
+                    vertical-align: middle;
+                    text-transform: uppercase;
+                }
+
+                .select {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .item {
+            background-color: $yellow;
+            margin-bottom: 30px;
+            overflow: hidden;
+
+            .infos {
+                background-color: $white;
+                border-left: $border;
+                border-right: $border;
+                border-top: $border;
+                float: left;
+                width: 100%;
+
+                .info {
+                    overflow: hidden;
+
+                    .img {
+                        float: left;
+                        height: 196px;
+                        position: relative;
+                        text-align: center;
+                        width: 100%;
+
+                        figure {
+                            position: relative;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+
+                        .logo {
+                            position: absolute;
+                            right: 0;
+                            top: 10px;
+                        }
+
+                        .offer {
+                            background-color: $green;
+                            color: $white;
+                            font-size: 10px;
+                            left: 0;
+                            padding: 6px;
+                            position: absolute;
+                            text-align: center;
+                            text-transform: uppercase;
+                            top: 0;
+
+                            strong {
+                                display: block;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+
+                    .text {
+                        float: left;
+                        padding: 12px;
+                        position: relative;
+                        width: 100%;
+
+                        h2 {
+                            color: $blue;
+                            font-size: 20px;
+                            margin-bottom: 7px;
+                            text-transform: uppercase;
+                        }
+
+                        p {
+                            font-family:'oswald-bold';
+                            font-size: 10px;
+                            letter-spacing: 1px;
+                            line-height: 14px;
+                            margin-bottom: 15px;
+                            text-transform: uppercase;
+                        }
+
+                        ul {
+                            li {
+                                font-size: 12px;
+                                margin-bottom: 10px;
+                            }
+                        }
+
+                        .open-detail {
+                            color: #0087e5;
+                            font-size: 12px;
+
+                            &::after {
+                                background: $sprite;
+                                background-position: 0 -16px;
+                                content: '';
+                                display: inline-block;
+                                height: 10px;
+                                margin-left: 5px;
+                                vertical-align: middle;
+                                width: 10px;
+                            }
+
+                            &.active {
+                                &::after {
+                                    transform: rotate(90deg);
+                                }
+                            }
+                        }
+
+                        .nav-favorite {
+                            background: $sprite;
+                            background-position: right 0;
+                            display: block;
+                            height: 26px;
+                            position: absolute;
+                            right: 10px;
+                            text-indent: -9999px;
+                            top: 10px;
+                            width: 30px;
+
+                            &.active {
+                                background-position: right -26px;
+                            }
+                        }
+                    }
+                }
+
+                .detail {
+                    border-top: $border;
+                    padding: 15px;
+                    position: relative;
+
+                    &::before {
+                        background: $sprite;
+                        background-position: -29px -32px;
+                        content: '';
+                        display: block;
+                        height: 13px;
+                        position: absolute;
+                        top: -12px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 24px;
+                    }
+
+                    p {
+                        font-size: 12px;
+                        line-height: 18px;
+                    }
+                }
+
+                .options {
+                    border-top: $border;
+                    padding: 15px 15px 0;
+
+                    ul {
+                        overflow: hidden;
+
+                        li {
+                            color: $blue;
+                            float: left;
+                            font-size: 12px;
+                            margin-bottom: 15px;
+                            width: 50%;
+
+                            i {
+                                background: $sprite;
+                                display: inline-block;
+                                height: 15px;
+                                margin-right: 3px;
+                                vertical-align: middle;
+                                width: 18px;
+
+                                &.door {
+                                    background-position: 0 0;
+                                }
+                                &.people {
+                                    background-position: -20px 0;
+                                }
+                                &.bagage {
+                                    background-position: -38px 0;
+                                }
+                                &.air {
+                                    background-position: -57px 0;
+                                }
+                                &.automatic {
+                                    background-position: -76px 0;
+                                }
+                                &.dh {
+                                    background-position: -95px 0;
+                                }
+                                &.glass {
+                                    background-position: -114px 0;
+                                }
+                                &.cd {
+                                    background-position: -134px 0;
+                                }
+                                &.radio {
+                                    background-position: -153px 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .price {
+                float: left;
+                padding: 30px 0;
+                width: 100%;
+
+                h3 {
+                    color: $gray;
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                    padding: 0 15px;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+                p {
+                    color: $gray;
+                    padding: 0 15px;
+                    text-align: center;
+
+                    &.old-price {
+                        font-size: 14px;
+                        margin-bottom: 6px;
+                        text-decoration: line-through;
+                        text-decoration-color: #f00;
+                    }
+
+                    &.atual-price {
+                        font-size: 12px;
+
+                        strong {
+                            color: $blue;
+                            font-size: 14px;
+
+                            span {
+                                font-size: 21px;
+                            }
+                        }
+                    }
+
+                    &.partial {
+                        color: $blue;
+                    }
+                }
+
+                .button {
+                    margin: 10px 0;
+                    padding: 0 20px;
+                    position: relative;
+
+                    &::before {
+                        background: $sprite;
+                        background-position: -61px -28px;
+                        content: '';
+                        display: block;
+                        height: 28px;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        width: 15px;
+                    }
+                }
+
+                small {
+                    color: $gray;
+                    display: block;
+                    font-size: 11px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:1280px) {
+    .container {
+        width: 1170px;
+    }
+
+    .cars {
+        aside {
+            width: 262px;
+        }
+
+        article {
+            width: 840px;
+
+            .filter {
+                margin: 0 0 30px;
+
+                .input-group {
+                    margin:0 30px 0 0;
+                    width: auto;
+                }
+            }
+
+            .item {
+                .infos {
+                    border-right: none;
+                    border-bottom: $border;
+                    width: 675px;
+
+                    .info {
+                        .img {
+                            width: 260px;
+                        }
+
+                        .text {
+                            padding: 12px 30px 30px;
+                            width: 414px;
+                        }
+                    }
+
+                    .options {
+                        ul {
+                            li {
+                                width: 33.3333%;
+                            }
+                        }
+                    }
+                }
+
+                .price {
+                    width: 163px;
+                }
+            }
+        }
+    }
+}

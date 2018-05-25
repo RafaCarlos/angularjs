@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>CVC Teste</title>
+
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+</head>
+<body ng-app="">
+
+	<section class="cars">
+		<div class="container">
+			<aside>
+				<form>
+					<fieldset>
+						<div class="input-group">
+							<label for="localRetirada">Local de retirada</label>
+							<div class="input">
+								<input type="text" name="localRetirada" id="localRetirada">
+							</div>
+						</div>
+						<div class="input-group">
+							<label for="outroLocal">
+								<input type="checkbox" name="outroLocal" id="outroLocal"> <strong>Devolver o carro em outro local</strong>
+							</label>
+						</div>
+						<div class="input-group">
+							<label for="localDevolucao">Local de devolução</label>
+							<div class="input">
+								<input type="text" name="localDevolucao" id="localDevolucao">
+							</div>
+						</div>
+						<div class="input-group">
+							<label for="retirada">Retirada</label>
+							<div class="input">
+								<input type="text" name="retirada" id="retirada" class="date">
+								<span class="select">
+									<span>00:00</span>
+									<select name="horaRetirada" id="horaRetirada">
+										<option value="">00:00</option>
+										<option value="">01:00</option>
+										<option value="">02:00</option>
+										<option value="">03:00</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<div class="input-group">
+							<label for="devolucao">Devolução - 8 dia(s)</label>
+							<div class="input">
+								<input type="text" name="devolucao" id="devolucao" class="date">
+								<span class="select">
+									<span>00:00</span>
+									<select name="horaDevolucao" id="horaDevolucao">
+										<option value="">00:00</option>
+										<option value="">01:00</option>
+										<option value="">02:00</option>
+										<option value="">03:00</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<div class="input-group">
+							<p class="title">Economize até 35%</p>
+							<div class="list-check">
+								<label for="incluirVoo">
+									<input type="checkbox" name="incluirVoo" id="incluirVoo"> Incluir voo
+								</label>
+								<label for="incluirHotel">
+									<input type="checkbox" name="incluirHotel" id="incluirHotel"> Incluir hotel
+								</label>
+							</div>
+						</div>
+						<button class="btn" type="submit">Buscar</button>
+					</fieldset>
+				</form>
+			</aside>
+			<article>
+				<div class="filter">
+					<form>
+						<fieldset>
+							<div class="input-group">
+								<label for="itens">Itens por página:</label>
+								<span class="select">
+									<span>100</span>
+									<select name="itens" id="itens">
+										<option value="">20</option>
+										<option value="">50</option>
+										<option value="">100</option>
+									</select>
+								</span>
+							</div>
+							<div class="input-group">
+								<label for="ordenar">Ordenar por:</label>
+								<span class="select">
+									<span>Menor preço</span>
+									<select name="ordenar" id="ordenar">
+										<option value="">Menor preço</option>
+										<option value="">Maior preço</option>
+										<option value="">Mais relevante</option>
+									</select>
+								</span>
+							</div>
+							<div class="input-group">
+								<label for="moeda">Moeda:</label>
+								<span class="select">
+									<span>Real</span>
+									<select name="moeda" id="moeda">
+										<option value="">Real</option>
+										<option value="">Dólar</option>
+										<option value="">Euro</option>
+									</select>
+								</span>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+
+				<div class="item">
+					<div class="infos">
+						<div class="info">
+							<div class="img">
+								<figure>
+									<img src="assets/images/car1.jpg" alt="VW Gol">
+								</figure>
+								<div class="logo"><img src="assets/images/logo-hertz.jpg" alt="Hertz"></div>
+								<span class="offer">
+									desconto <strong>20%</strong>
+								</span>
+							</div>
+							<div class="text">
+								<h2>Carro Econômico com ar</h2>
+								<p>
+									Código da taxa: IFMR <br>
+									Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar
+								</p>
+								<ul>
+									<li>- Quilometragem livre</li>
+									<li>- Seguro total do veículo</li>
+									<li>- Seguro a terceiros</li>
+									<li>- Taxas de serviços inclusas</li>
+								</ul>
+								<a class="open-detail" href ng-click="goDetail = !goDetail">Ver detalhes</a>
+								<a class="nav-favorite active" href>Favorito</a>
+							</div>
+						</div>
+
+						<div class="detail" ng-show="goDetail">
+							<p>
+								Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.
+							</p>
+						</div>
+
+						<div class="options">
+							<ul>
+								<li>
+									<i class="icon door"></i> 4 portas
+								</li>
+								<li>
+									<i class="icon people"></i> 5 pessoas
+								</li>
+								<li>
+									<i class="icon bagage"></i> 3 malas
+								</li>
+								<li>
+									<i class="icon air"></i> Ar-condicionado
+								</li>
+								<li>
+									<i class="icon automatic"></i> Automático
+								</li>
+								<li>
+									<i class="icon dh"></i> Direção hidráulica
+								</li>
+								<li>
+									<i class="icon glass"></i> Vidro elétrico
+								</li>
+								<li>
+									<i class="icon cd"></i> CD ou USB
+								</li>
+								<li>
+									<i class="icon radio"></i> Rádio AM/FM
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="price">
+						<h3>Total da locação</h3>
+						<p class="old-price">de R$ 938</p>
+						<p class="atual-price">
+							por <strong>R$ <span>838</span></strong>
+						</p>
+						<p class="partial"><strong>em até 10x</strong></p>
+						<div class="button">
+							<a href="#" class="btn">Alugar</a>
+						</div>
+						<small>Taxas inclusas</small>
+					</div>
+				</div>
+
+				<div class="item">
+					<div class="infos">
+						<div class="info">
+							<div class="img">
+								<figure>
+									<img src="assets/images/car2.jpg" alt="VW Gol">
+								</figure>
+								<div class="logo"><img src="assets/images/logo-budget.jpg" alt="Hertz"></div>
+							</div>
+							<div class="text">
+								<h2>Carro Econômico com ar</h2>
+								<p>
+									Código da taxa: IFMR <br>
+									Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar
+								</p>
+								<ul>
+									<li>- Quilometragem livre</li>
+									<li>- Seguro total do veículo</li>
+									<li>- Seguro a terceiros</li>
+									<li>- Taxas de serviços inclusas</li>
+								</ul>
+								<a class="open-detail" href ng-click="goDetail1 = !goDetail1">Ver detalhes</a>
+								<a href="#" class="nav-favorite">Favorito</a>
+							</div>
+						</div>
+
+						<div class="detail" ng-show="goDetail1">
+							<p>
+								Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.
+							</p>
+						</div>
+
+						<div class="options">
+							<ul>
+								<li>
+									<i class="icon door"></i> 4 portas
+								</li>
+								<li>
+									<i class="icon people"></i> 5 pessoas
+								</li>
+								<li>
+									<i class="icon bagage"></i> 3 malas
+								</li>
+								<li>
+									<i class="icon air"></i> Ar-condicionado
+								</li>
+								<li>
+									<i class="icon automatic"></i> Automático
+								</li>
+								<li>
+									<i class="icon dh"></i> Direção hidráulica
+								</li>
+								<li>
+									<i class="icon glass"></i> Vidro elétrico
+								</li>
+								<li>
+									<i class="icon cd"></i> CD ou USB
+								</li>
+								<li>
+									<i class="icon radio"></i> Rádio AM/FM
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="price">
+						<h3>Total da locação</h3>
+						<p class="atual-price">
+							por <strong>R$ <span>838</span></strong>
+						</p>
+						<p class="partial"><strong>em até 10x</strong></p>
+						<div class="button">
+							<a href="#" class="btn">Alugar</a>
+						</div>
+						<small>Taxas inclusas</small>
+					</div>
+				</div>
+
+				<div class="item">
+					<div class="infos">
+						<div class="info">
+							<div class="img">
+								<figure>
+									<img src="assets/images/car2.jpg" alt="VW Gol">
+								</figure>
+								<div class="logo"><img src="assets/images/logo-budget.jpg" alt="Hertz"></div>
+							</div>
+							<div class="text">
+								<h2>Carro Econômico com ar</h2>
+								<p>
+									Código da taxa: IFMR <br>
+									Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar
+								</p>
+								<ul>
+									<li>- Quilometragem livre</li>
+									<li>- Seguro total do veículo</li>
+									<li>- Seguro a terceiros</li>
+									<li>- Taxas de serviços inclusas</li>
+								</ul>
+								<a class="open-detail" href ng-click="goDetail2 = !goDetail2">Ver detalhes</a>
+								<a href="#" class="nav-favorite">Favorito</a>
+							</div>
+						</div>
+
+						<div class="detail" ng-show="goDetail2">
+							<p>
+								Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.
+							</p>
+						</div>
+
+						<div class="options">
+							<ul>
+								<li>
+									<i class="icon door"></i> 4 portas
+								</li>
+								<li>
+									<i class="icon people"></i> 5 pessoas
+								</li>
+								<li>
+									<i class="icon bagage"></i> 3 malas
+								</li>
+								<li>
+									<i class="icon air"></i> Ar-condicionado
+								</li>
+								<li>
+									<i class="icon automatic"></i> Automático
+								</li>
+								<li>
+									<i class="icon dh"></i> Direção hidráulica
+								</li>
+								<li>
+									<i class="icon glass"></i> Vidro elétrico
+								</li>
+								<li>
+									<i class="icon cd"></i> CD ou USB
+								</li>
+								<li>
+									<i class="icon radio"></i> Rádio AM/FM
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="price">
+						<h3>Total da locação</h3>
+						<p class="atual-price">
+							por <strong>R$ <span>838</span></strong>
+						</p>
+						<p class="partial"><strong>em até 10x</strong></p>
+						<div class="button">
+							<a href="#" class="btn">Alugar</a>
+						</div>
+						<small>Taxas inclusas</small>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js" type="text/javascript"></script>
+	<script src="assets/js/scripts.js" type="text/javascript"></script>
+	
+</body>
+</html>

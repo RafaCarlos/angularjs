@@ -1,0 +1,43 @@
+{
+    "carros": {
+        "id":1,
+        "imagem": "car1.jpg",
+        "logo": "logo-hertz.jpg",
+        "titulo": "Carro Econômico com ar",
+        "texto": "Código da taxa: IFMR <br>Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar",
+        "lista": [
+            {
+                "item1": "- Quilometragem livre",
+                "item2": "- Seguro total do veículo",
+                "item3": "- Seguro a terceiros",
+                "item4": "- Taxas de serviços inclusas"
+            }
+        ],
+        "detalhe": "Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.",
+        "opcionais": [
+            {
+                "icon1": "door",
+                "texto1": "4 portas",
+                "icon2": "people",
+                "texto2": "5 pessoas",
+                "icon3": "bagage",
+                "texto3": "3 malas",
+                "icon4": "air",
+                "texto4": "Ar-condicionado",
+                "icon5": "automatic",
+                "texto5": "Automático",
+                "icon6": "dh",
+                "texto6": "Direção Hidráulica",
+                "icon7": "glass",
+                "texto7": "Vidro elétrico",
+                "icon8": "cd",
+                "texto8": "CD ou USB",
+                "icon9": "radio",
+                "texto9": "Rádio AM/FM"
+            }
+        ],
+        "precoantigo": "938",
+        "precoatual": "838",
+        "oferta": "sim"
+    }
+}
