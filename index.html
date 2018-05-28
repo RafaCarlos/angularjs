@@ -8,7 +8,7 @@
 
 	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
 </head>
-<body ng-app="">
+<body ng-app="pageApp">
 
 	<section class="cars">
 		<div class="container">
@@ -37,7 +37,6 @@
 							<div class="input">
 								<input type="text" name="retirada" id="retirada" class="date">
 								<span class="select">
-									<span>00:00</span>
 									<select name="horaRetirada" id="horaRetirada">
 										<option value="">00:00</option>
 										<option value="">01:00</option>
@@ -52,7 +51,6 @@
 							<div class="input">
 								<input type="text" name="devolucao" id="devolucao" class="date">
 								<span class="select">
-									<span>00:00</span>
 									<select name="horaDevolucao" id="horaDevolucao">
 										<option value="">00:00</option>
 										<option value="">01:00</option>
@@ -84,33 +82,30 @@
 							<div class="input-group">
 								<label for="itens">Itens por página:</label>
 								<span class="select">
-									<span>100</span>
-									<select name="itens" id="itens">
-										<option value="">20</option>
-										<option value="">50</option>
-										<option value="">100</option>
+									<select name="itens" id="itens" ng-model="selItens">
+										<option value="">Selecione</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
 									</select>
 								</span>
 							</div>
 							<div class="input-group">
 								<label for="ordenar">Ordenar por:</label>
 								<span class="select">
-									<span>Menor preço</span>
-									<select name="ordenar" id="ordenar">
-										<option value="">Menor preço</option>
-										<option value="">Maior preço</option>
-										<option value="">Mais relevante</option>
+									<select name="ordenar" id="ordenar" ng-model="selPreco">
+										<option value="">Selecione</option>
+										<option ng-value="false" selected>Menor preço</option>
+										<option ng-value="true">Maior preço</option>
 									</select>
 								</span>
 							</div>
 							<div class="input-group">
 								<label for="moeda">Moeda:</label>
 								<span class="select">
-									<span>Real</span>
-									<select name="moeda" id="moeda">
-										<option value="">Real</option>
-										<option value="">Dólar</option>
-										<option value="">Euro</option>
+									<select name="moeda" id="moeda" ng-model="selMoeda">
+										<option value="">Todos</option>
+										<option value="Real">Real</option>
+										<option value="Dólar">Dólar</option>
 									</select>
 								</span>
 							</div>
@@ -118,238 +113,58 @@
 					</form>
 				</div>
 
-				<div class="item">
-					<div class="infos">
-						<div class="info">
-							<div class="img">
-								<figure>
-									<img src="assets/images/car1.jpg" alt="VW Gol">
-								</figure>
-								<div class="logo"><img src="assets/images/logo-hertz.jpg" alt="Hertz"></div>
-								<span class="offer">
-									desconto <strong>20%</strong>
-								</span>
+				<div ng-controller="carsCtrl">
+					<div class="item" ng-repeat="x in myData | limitTo: selItens | filter: selMoeda | orderBy:'precoatual':selPreco">
+						<div class="infos" ng-controller="crtlDetail">
+							<div class="info">
+								<div class="img">
+									<figure>
+										<img src="assets/images/{{ x.imagem }}" alt="{{ x.modelo }}">
+									</figure>
+									<div class="logo"><img src="assets/images/{{ x.logoempresa }}" alt="{{ x.nomeempresa }}"></div>
+									<span class="offer {{ x.oferta }}">
+										desconto <strong>{{ x.ofertavalor }}</strong>
+									</span>
+								</div>
+								<div class="text">
+									<h2>{{ x.titulo }}</h2>
+									<p>
+										{{ x.texto }}
+									</p>
+									<ul>
+										<li ng-repeat="x in myData2">{{ x.item }}</li>
+									</ul>
+									<div ng-controller="crtlFav"><a class="nav-favorite" ng-class="{'active' : toggleClass}" href ng-click="changeClass()">Favorito</a></div>
+									<a class="open-detail" ng-class="{'active' : toggleClass}" href ng-click="openDetail()">{{textNav}}</a>
+								</div>
 							</div>
-							<div class="text">
-								<h2>Carro Econômico com ar</h2>
+	
+							<div class="detail" ng-show="showDetail">
 								<p>
-									Código da taxa: IFMR <br>
-									Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar
+									{{ x.detalhe }}
 								</p>
+							</div>
+	
+							<div class="options">
 								<ul>
-									<li>- Quilometragem livre</li>
-									<li>- Seguro total do veículo</li>
-									<li>- Seguro a terceiros</li>
-									<li>- Taxas de serviços inclusas</li>
+									<li ng-repeat="x in myData3">
+										<i class="icon {{ x.icon }}"></i> {{ x.texto }}
+									</li>
 								</ul>
-								<a class="open-detail" href ng-click="goDetail = !goDetail">Ver detalhes</a>
-								<a class="nav-favorite active" href>Favorito</a>
 							</div>
 						</div>
-
-						<div class="detail" ng-show="goDetail">
-							<p>
-								Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.
+						<div class="price">
+							<h3>Total da locação</h3>
+							<p class="old-price {{ x.precoantigo }}">de R$ {{ x.precoantigovalor }}</p>
+							<p class="atual-price">
+								por <strong>R$ <span>{{ x.precoatual }}</span></strong>
 							</p>
-						</div>
-
-						<div class="options">
-							<ul>
-								<li>
-									<i class="icon door"></i> 4 portas
-								</li>
-								<li>
-									<i class="icon people"></i> 5 pessoas
-								</li>
-								<li>
-									<i class="icon bagage"></i> 3 malas
-								</li>
-								<li>
-									<i class="icon air"></i> Ar-condicionado
-								</li>
-								<li>
-									<i class="icon automatic"></i> Automático
-								</li>
-								<li>
-									<i class="icon dh"></i> Direção hidráulica
-								</li>
-								<li>
-									<i class="icon glass"></i> Vidro elétrico
-								</li>
-								<li>
-									<i class="icon cd"></i> CD ou USB
-								</li>
-								<li>
-									<i class="icon radio"></i> Rádio AM/FM
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="price">
-						<h3>Total da locação</h3>
-						<p class="old-price">de R$ 938</p>
-						<p class="atual-price">
-							por <strong>R$ <span>838</span></strong>
-						</p>
-						<p class="partial"><strong>em até 10x</strong></p>
-						<div class="button">
-							<a href="#" class="btn">Alugar</a>
-						</div>
-						<small>Taxas inclusas</small>
-					</div>
-				</div>
-
-				<div class="item">
-					<div class="infos">
-						<div class="info">
-							<div class="img">
-								<figure>
-									<img src="assets/images/car2.jpg" alt="VW Gol">
-								</figure>
-								<div class="logo"><img src="assets/images/logo-budget.jpg" alt="Hertz"></div>
+							<p class="partial"><strong>em até 10x</strong></p>
+							<div class="button">
+								<a href="#" class="btn">Alugar</a>
 							</div>
-							<div class="text">
-								<h2>Carro Econômico com ar</h2>
-								<p>
-									Código da taxa: IFMR <br>
-									Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar
-								</p>
-								<ul>
-									<li>- Quilometragem livre</li>
-									<li>- Seguro total do veículo</li>
-									<li>- Seguro a terceiros</li>
-									<li>- Taxas de serviços inclusas</li>
-								</ul>
-								<a class="open-detail" href ng-click="goDetail1 = !goDetail1">Ver detalhes</a>
-								<a href="#" class="nav-favorite">Favorito</a>
-							</div>
+							<small>Taxas inclusas</small>
 						</div>
-
-						<div class="detail" ng-show="goDetail1">
-							<p>
-								Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.
-							</p>
-						</div>
-
-						<div class="options">
-							<ul>
-								<li>
-									<i class="icon door"></i> 4 portas
-								</li>
-								<li>
-									<i class="icon people"></i> 5 pessoas
-								</li>
-								<li>
-									<i class="icon bagage"></i> 3 malas
-								</li>
-								<li>
-									<i class="icon air"></i> Ar-condicionado
-								</li>
-								<li>
-									<i class="icon automatic"></i> Automático
-								</li>
-								<li>
-									<i class="icon dh"></i> Direção hidráulica
-								</li>
-								<li>
-									<i class="icon glass"></i> Vidro elétrico
-								</li>
-								<li>
-									<i class="icon cd"></i> CD ou USB
-								</li>
-								<li>
-									<i class="icon radio"></i> Rádio AM/FM
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="price">
-						<h3>Total da locação</h3>
-						<p class="atual-price">
-							por <strong>R$ <span>838</span></strong>
-						</p>
-						<p class="partial"><strong>em até 10x</strong></p>
-						<div class="button">
-							<a href="#" class="btn">Alugar</a>
-						</div>
-						<small>Taxas inclusas</small>
-					</div>
-				</div>
-
-				<div class="item">
-					<div class="infos">
-						<div class="info">
-							<div class="img">
-								<figure>
-									<img src="assets/images/car2.jpg" alt="VW Gol">
-								</figure>
-								<div class="logo"><img src="assets/images/logo-budget.jpg" alt="Hertz"></div>
-							</div>
-							<div class="text">
-								<h2>Carro Econômico com ar</h2>
-								<p>
-									Código da taxa: IFMR <br>
-									Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar
-								</p>
-								<ul>
-									<li>- Quilometragem livre</li>
-									<li>- Seguro total do veículo</li>
-									<li>- Seguro a terceiros</li>
-									<li>- Taxas de serviços inclusas</li>
-								</ul>
-								<a class="open-detail" href ng-click="goDetail2 = !goDetail2">Ver detalhes</a>
-								<a href="#" class="nav-favorite">Favorito</a>
-							</div>
-						</div>
-
-						<div class="detail" ng-show="goDetail2">
-							<p>
-								Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.
-							</p>
-						</div>
-
-						<div class="options">
-							<ul>
-								<li>
-									<i class="icon door"></i> 4 portas
-								</li>
-								<li>
-									<i class="icon people"></i> 5 pessoas
-								</li>
-								<li>
-									<i class="icon bagage"></i> 3 malas
-								</li>
-								<li>
-									<i class="icon air"></i> Ar-condicionado
-								</li>
-								<li>
-									<i class="icon automatic"></i> Automático
-								</li>
-								<li>
-									<i class="icon dh"></i> Direção hidráulica
-								</li>
-								<li>
-									<i class="icon glass"></i> Vidro elétrico
-								</li>
-								<li>
-									<i class="icon cd"></i> CD ou USB
-								</li>
-								<li>
-									<i class="icon radio"></i> Rádio AM/FM
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="price">
-						<h3>Total da locação</h3>
-						<p class="atual-price">
-							por <strong>R$ <span>838</span></strong>
-						</p>
-						<p class="partial"><strong>em até 10x</strong></p>
-						<div class="button">
-							<a href="#" class="btn">Alugar</a>
-						</div>
-						<small>Taxas inclusas</small>
 					</div>
 				</div>
 			</article>

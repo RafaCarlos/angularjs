@@ -160,7 +160,7 @@ strong {
     font-size: 14px;
     height: 38px;
     line-height: 38px;
-    padding: 0 20px 0 0;
+    overflow: hidden;
     position: relative;
 
     &::after {
@@ -176,18 +176,15 @@ strong {
         width: 10px;
     }
 
-    span {
-        padding: 0 15px;
-    }
-
     select {
+        border: none;
         height: 38px;
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1;
+        vertical-align: top;
+        width: calc(100% + 28px);
+
+        option {
+            padding: 0 10px;
+        }
     }
 }
 
@@ -376,6 +373,10 @@ strong {
                             text-transform: uppercase;
                             top: 0;
 
+                            &.nao {
+                                display: none;
+                            }
+
                             strong {
                                 display: block;
                                 font-size: 15px;
@@ -429,7 +430,7 @@ strong {
 
                             &.active {
                                 &::after {
-                                    transform: rotate(90deg);
+                                    transform: rotate(45deg);
                                 }
                             }
                         }
@@ -555,6 +556,10 @@ strong {
                         margin-bottom: 6px;
                         text-decoration: line-through;
                         text-decoration-color: #f00;
+
+                        &.nao {
+                            display: none;
+                        }
                     }
 
                     &.atual-price {

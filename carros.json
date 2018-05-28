@@ -1,43 +1,132 @@
 {
-    "carros": {
-        "id":1,
-        "imagem": "car1.jpg",
-        "logo": "logo-hertz.jpg",
-        "titulo": "Carro Econômico com ar",
-        "texto": "Código da taxa: IFMR <br>Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar",
-        "lista": [
-            {
-                "item1": "- Quilometragem livre",
-                "item2": "- Seguro total do veículo",
-                "item3": "- Seguro a terceiros",
-                "item4": "- Taxas de serviços inclusas"
-            }
-        ],
-        "detalhe": "Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.",
-        "opcionais": [
-            {
-                "icon1": "door",
-                "texto1": "4 portas",
-                "icon2": "people",
-                "texto2": "5 pessoas",
-                "icon3": "bagage",
-                "texto3": "3 malas",
-                "icon4": "air",
-                "texto4": "Ar-condicionado",
-                "icon5": "automatic",
-                "texto5": "Automático",
-                "icon6": "dh",
-                "texto6": "Direção Hidráulica",
-                "icon7": "glass",
-                "texto7": "Vidro elétrico",
-                "icon8": "cd",
-                "texto8": "CD ou USB",
-                "icon9": "radio",
-                "texto9": "Rádio AM/FM"
-            }
-        ],
-        "precoantigo": "938",
-        "precoatual": "838",
-        "oferta": "sim"
-    }
+    "carros": [
+        {
+            "id":1,
+            "modelo": "VW Gol",
+            "imagem": "car1.jpg",
+            "nomeempresa": "Hertz",
+            "logoempresa": "logo-hertz.jpg",
+            "titulo": "Carro Econômico com ar",
+            "texto": "Código da taxa: IFMR Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar",
+            "lista": [
+                {
+                    "item": "- Quilometragem livre"
+                },
+                {
+                    "item": "- Seguro total do veículo"
+                },
+                {
+                    "item": "- Seguro a terceiros"
+                },
+                {
+                    "item": "- Taxas de serviços inclusas"
+                }
+            ],
+            "detalhe": "Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.",
+            "opcionais": [
+                {
+                    "icon": "door",
+                    "texto": "4 portas"
+                },
+                {
+                    "icon": "people",
+                    "texto": "5 pessoas"
+                },
+                {
+                    "icon": "bagage",
+                    "texto": "3 malas"
+                },
+                {
+                    "icon": "air",
+                    "texto": "Ar-condicionado"
+                },
+                {
+                    "icon": "automatic",
+                    "texto": "Automático"
+                },
+                {
+                    "icon": "dh",
+                    "texto": "Direção Hidráulica"
+                },
+                {
+                    "icon": "glass",
+                    "texto": "Vidro elétrico"
+                },
+                {
+                    "icon": "cd",
+                    "texto": "CD ou USB"
+                },
+                {
+                    "icon": "radio",
+                    "texto": "Rádio AM/FM"
+                }
+            ],
+            "precoantigo": "sim",
+            "precoantigovalor": "938",
+            "precoatual": "838",
+            "oferta": "sim",
+            "ofertavalor": "20%",
+            "moeda": "Real"
+        },
+        {
+            "id":2,
+            "modelo": "Renault Sandero",
+            "imagem": "car2.jpg",
+            "nomeempresa": "Budget",
+            "logoempresa": "logo-budget.jpg",
+            "titulo": "Carro Econômico com ar",
+            "texto": "Código da taxa: IFMR Crevrolet Celta, Ford Fiesta, VW Gol, FIAT Palio ou similar",
+            "lista": [
+                {
+                    "item": "- 500 KM"
+                },
+                {
+                    "item": "- Seguro total do veículo"
+                },
+                {
+                    "item": "- Seguro a terceiros"
+                },
+                {
+                    "item": "- Taxas de serviços inclusas"
+                }
+            ],
+            "detalhe": "Super inclusive promocional - km livre, seguro total do veículo (LDW), seguro a terceiros (SLI), taxas de serviços inclusas e 1 motorista adicional.",
+            "opcionais": [
+                {
+                    "icon": "door",
+                    "texto": "4 portas"
+                },
+                {
+                    "icon": "people",
+                    "texto": "5 pessoas"
+                },
+                {
+                    "icon": "bagage",
+                    "texto": "4 malas"
+                },
+                {
+                    "icon": "air",
+                    "texto": "Ar-condicionado"
+                },
+                {
+                    "icon": "dh",
+                    "texto": "Direção Hidráulica"
+                },
+                {
+                    "icon": "glass",
+                    "texto": "Vidro elétrico"
+                },
+                {
+                    "icon": "cd",
+                    "texto": "CD ou USB"
+                }
+            ],
+            "precoantigo": "nao",
+            "precoantigovalor": "",
+            "precoatual": "938",
+            "oferta": "nao",
+            "ofertavalor": "",
+            "moeda": "Dólar"
+        }
+    ]
 }
